@@ -54,6 +54,7 @@ namespace MYSQL_Benuter_erstellen
                 }
                 command.Dispose();
                 mySqlConnection.Close();
+                MessageBox.Show("Der Servicebenutzer wurde erfolgreich angelegt.");
             }
             catch (Exception ex)
             {

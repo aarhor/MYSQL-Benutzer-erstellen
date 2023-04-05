@@ -3,6 +3,9 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Threading;
+using System.Web;
+using MYSQL_Benutzer_erstellen.Klassen;
+
 
 namespace MYSQL_Benuter_erstellen
 {
@@ -10,16 +13,11 @@ namespace MYSQL_Benuter_erstellen
     {
         public Form1() => InitializeComponent();
 
-        string Server_IP, MYSQL_Name, MYSQL_Passwort;
-        string Befehl;
-
         public void MYSQL(string SQL_Befehl, int switch_on)
         {
             try
             {
-                string Connectionstring = "server=" + Server_IP + ";user id=" + MYSQL_Name + "; password=" + MYSQL_Passwort + ";port=3306;SslMode=None";
-
-                MySqlConnection mySqlConnection = new(Connectionstring);
+                MySqlConnection mySqlConnection = new(MYSQL_Benutzer_erstellen.Klassen.MYSQL.Connectionstring());
                 mySqlConnection.Open();
 
                 MySqlCommand command = mySqlConnection.CreateCommand();
@@ -31,9 +29,7 @@ namespace MYSQL_Benuter_erstellen
                             command.CommandText = SQL_Befehl;
                             IDataReader reader = command.ExecuteReader();
                             int i = 0;
-
-                            if (listBox1.InvokeRequired) listBox1.Invoke(new Action(() => listBox1.Items.Clear()));
-
+                            if (listBox1.InvokeRequired) listBox1.Invoke(new Action(listBox1.Items.Clear));
                             while (reader.Read() != false)
                             {
                                 if (listBox1.InvokeRequired) listBox1.Invoke(new Action(() => listBox1.Items.Add(reader[i].ToString())));
@@ -58,20 +54,8 @@ namespace MYSQL_Benuter_erstellen
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string Benutzernameli = txtBox_Name.Text;
-            string Passwortli = txtBox_Passwort.Text;
-            string Datenbankli = listBox1.SelectedItem.ToString();
-
-            if (!checkBox1.Checked)
-                MYSQL("CREATE USER '" + Benutzernameli + "'@'%' IDENTIFIED BY '" + Passwortli + "';FLUSH PRIVILEGES;", 2);
-
-            MYSQL("GRANT ALL PRIVILEGES ON " + Datenbankli + ".* TO '" + Benutzernameli + "'@'%';FLUSH PRIVILEGES;", 2);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,20 +76,57 @@ namespace MYSQL_Benuter_erstellen
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            Server_IP = txtBox_MYSQL_IP.Text;
-            MYSQL_Name = txtBox_MYSQL_Benutzer.Text;
-            MYSQL_Passwort = txtBox_MYSQL_Passwort.Text;
+            string Passwort = Crypto_137.Text_Decrypt(Registry.GetValue("Passwort"), string.Empty);
+
+            txtBox_MYSQL_IP.Text = Registry.GetValue("IP-Adresse");
+            txtBox_MYSQL_Benutzer.Text = Registry.GetValue("Benutzername");
+            txtBox_MYSQL_Passwort.Text = Passwort;
+            txtBox_MYSQL_Port.Text = Registry.GetValue("Port");
 
             await Task.Run(() => MYSQL("show databases", 1));
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private void btn_Speichern_Click(object sender, EventArgs e)
         {
-            Server_IP = txtBox_MYSQL_IP.Text;
-            MYSQL_Name = txtBox_MYSQL_Benutzer.Text;
-            MYSQL_Passwort = txtBox_MYSQL_Passwort.Text;
+            string Benutzernameli = txtBox_Name.Text;
+            string Passwortli = txtBox_Passwort.Text;
+            string Datenbankli = listBox1.SelectedItem.ToString();
+
+            if (!checkBox1.Checked)
+                MYSQL(string.Format("CREATE USER '{0}'@'192.168.0.%' IDENTIFIED BY '{1}';FLUSH PRIVILEGES;", Benutzernameli, Passwortli), 2);
+
+            MYSQL(string.Format("GRANT ALL PRIVILEGES ON {0}.* TO '{1}'@'192.168.0.%';FLUSH PRIVILEGES;", Datenbankli, Benutzernameli), 2);
+        }
+
+        private async void btn_MYSQL_Daten_speichern_Click(object sender, EventArgs e)
+        {
+            string Passwort = Crypto_137.Text_Encrypt(txtBox_MYSQL_Passwort.Text, string.Empty);
+
+            Registry.SetValue("IP-Adresse", txtBox_MYSQL_IP.Text);
+            Registry.SetValue("Benutzername", txtBox_MYSQL_Benutzer.Text);
+            Registry.SetValue("Passwort", Passwort);
+            Registry.SetValue("Port", txtBox_MYSQL_Port.Text);
 
             await Task.Run(() => MYSQL("show databases", 1));
+        }
+
+        private void btn_Neues_Passwort_Click(object sender, EventArgs e)
+        {
+            PasswordGenerator randomPasswordGenerator = new PasswordGenerator();
+
+            string password = randomPasswordGenerator.GeneratePassword(true, true, true, true, 30);
+
+            MessageBox.Show(password);
+        }
+
+        private void chkBox_Recht_Checked(object sender, EventArgs e)
+        {
+            CheckBox checkBox_Recht = (CheckBox)sender;
+
+            if (checkBox_Recht != null)
+            {
+                MessageBox.Show(checkBox_Recht.Text);
+            }
         }
     }
 }

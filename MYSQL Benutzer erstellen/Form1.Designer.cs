@@ -37,7 +37,10 @@ namespace MYSQL_Benuter_erstellen
             label2 = new Label();
             label3 = new Label();
             groupBox1 = new GroupBox();
-            button2 = new Button();
+            checkBox23 = new CheckBox();
+            txtBox_MYSQL_Port = new TextBox();
+            label7 = new Label();
+            btn_MYSQL_Daten_speichern = new Button();
             txtBox_MYSQL_Passwort = new TextBox();
             txtBox_MYSQL_Benutzer = new TextBox();
             txtBox_MYSQL_IP = new TextBox();
@@ -46,41 +49,42 @@ namespace MYSQL_Benuter_erstellen
             label4 = new Label();
             checkBox1 = new CheckBox();
             groupBox2 = new GroupBox();
-            checkBox2 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox6 = new CheckBox();
-            checkBox7 = new CheckBox();
-            checkBox8 = new CheckBox();
-            checkBox9 = new CheckBox();
-            checkBox10 = new CheckBox();
-            checkBox11 = new CheckBox();
-            checkBox12 = new CheckBox();
-            checkBox13 = new CheckBox();
-            checkBox14 = new CheckBox();
-            checkBox15 = new CheckBox();
-            checkBox16 = new CheckBox();
-            checkBox17 = new CheckBox();
-            checkBox18 = new CheckBox();
-            checkBox19 = new CheckBox();
-            checkBox20 = new CheckBox();
-            checkBox21 = new CheckBox();
             checkBox22 = new CheckBox();
+            chkBox_Recht_UPDATE = new CheckBox();
+            chkBox_Recht_TRIGGER = new CheckBox();
+            chkBox_Recht_SHOW_VIEW = new CheckBox();
+            chkBox_Recht_SELECT = new CheckBox();
+            chkBox_Recht_REFERENCES = new CheckBox();
+            chkBox_Recht_LOCK_TABLES = new CheckBox();
+            chkBox_Recht_INSERT = new CheckBox();
+            chkBox_Recht_INDEX = new CheckBox();
+            chkBox_Recht_EXECUTE = new CheckBox();
+            chkBox_Recht_EVENT = new CheckBox();
+            chkBox_Recht_DROP = new CheckBox();
+            chkBox_Recht_DELETE_HISTORY = new CheckBox();
+            chkBox_Recht_DELETE = new CheckBox();
+            chkBox_Recht_CREATE_VIEW = new CheckBox();
+            chkBox_Recht_CREATE_TEMPORARY_TABLES = new CheckBox();
+            chkBox_Recht_CREATE_ROUTINE = new CheckBox();
+            chkBox_Recht_CREATE = new CheckBox();
+            chkBox_Recht_ALTER_ROUTINE = new CheckBox();
+            chkBox_Recht_ALTER = new CheckBox();
+            chkBox_Recht_ALL = new CheckBox();
+            btn_Neues_Passwort = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // btn_Speichern
             // 
-            btn_Speichern.Location = new Point(94, 222);
+            btn_Speichern.Location = new Point(185, 222);
             btn_Speichern.Margin = new Padding(4, 3, 4, 3);
             btn_Speichern.Name = "btn_Speichern";
             btn_Speichern.Size = new Size(88, 27);
             btn_Speichern.TabIndex = 3;
-            btn_Speichern.Text = "Speichern";
+            btn_Speichern.Text = "Erstellen";
             btn_Speichern.UseVisualStyleBackColor = true;
-            btn_Speichern.Click += button1_Click;
+            btn_Speichern.Click += btn_Speichern_Click;
             // 
             // label1
             // 
@@ -99,7 +103,6 @@ namespace MYSQL_Benuter_erstellen
             txtBox_Name.Name = "txtBox_Name";
             txtBox_Name.Size = new Size(179, 23);
             txtBox_Name.TabIndex = 1;
-            txtBox_Name.Text = "srv-db-";
             // 
             // listBox1
             // 
@@ -117,7 +120,6 @@ namespace MYSQL_Benuter_erstellen
             txtBox_Passwort.Location = new Point(94, 37);
             txtBox_Passwort.Margin = new Padding(4, 3, 4, 3);
             txtBox_Passwort.Name = "txtBox_Passwort";
-            txtBox_Passwort.PasswordChar = '*';
             txtBox_Passwort.Size = new Size(179, 23);
             txtBox_Passwort.TabIndex = 2;
             // 
@@ -143,7 +145,10 @@ namespace MYSQL_Benuter_erstellen
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(checkBox23);
+            groupBox1.Controls.Add(txtBox_MYSQL_Port);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(btn_MYSQL_Daten_speichern);
             groupBox1.Controls.Add(txtBox_MYSQL_Passwort);
             groupBox1.Controls.Add(txtBox_MYSQL_Benutzer);
             groupBox1.Controls.Add(txtBox_MYSQL_IP);
@@ -154,21 +159,49 @@ namespace MYSQL_Benuter_erstellen
             groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 3, 4, 3);
-            groupBox1.Size = new Size(260, 203);
+            groupBox1.Size = new Size(259, 219);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
-            groupBox1.Text = "MYSQL Einstellungen";
+            groupBox1.Text = "MYSQL Verbindungseinstellungen";
             // 
-            // button2
+            // checkBox23
             // 
-            button2.Location = new Point(98, 166);
-            button2.Margin = new Padding(4, 3, 4, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(88, 27);
-            button2.TabIndex = 11;
-            button2.Text = "Testen";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            checkBox23.AutoSize = true;
+            checkBox23.Location = new Point(163, 131);
+            checkBox23.Name = "checkBox23";
+            checkBox23.Size = new Size(77, 34);
+            checkBox23.TabIndex = 11;
+            checkBox23.Text = "Kennwort\r\nanzeigen";
+            checkBox23.UseVisualStyleBackColor = true;
+            // 
+            // txtBox_MYSQL_Port
+            // 
+            txtBox_MYSQL_Port.Location = new Point(8, 184);
+            txtBox_MYSQL_Port.Margin = new Padding(4, 3, 4, 3);
+            txtBox_MYSQL_Port.Name = "txtBox_MYSQL_Port";
+            txtBox_MYSQL_Port.Size = new Size(149, 23);
+            txtBox_MYSQL_Port.TabIndex = 13;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(7, 166);
+            label7.Margin = new Padding(4, 3, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(32, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Port:";
+            // 
+            // btn_MYSQL_Daten_speichern
+            // 
+            btn_MYSQL_Daten_speichern.Location = new Point(164, 181);
+            btn_MYSQL_Daten_speichern.Margin = new Padding(4, 3, 4, 3);
+            btn_MYSQL_Daten_speichern.Name = "btn_MYSQL_Daten_speichern";
+            btn_MYSQL_Daten_speichern.Size = new Size(88, 27);
+            btn_MYSQL_Daten_speichern.TabIndex = 11;
+            btn_MYSQL_Daten_speichern.Text = "Speichern";
+            btn_MYSQL_Daten_speichern.UseVisualStyleBackColor = true;
+            btn_MYSQL_Daten_speichern.Click += btn_MYSQL_Daten_speichern_Click;
             // 
             // txtBox_MYSQL_Passwort
             // 
@@ -176,27 +209,24 @@ namespace MYSQL_Benuter_erstellen
             txtBox_MYSQL_Passwort.Margin = new Padding(4, 3, 4, 3);
             txtBox_MYSQL_Passwort.Name = "txtBox_MYSQL_Passwort";
             txtBox_MYSQL_Passwort.PasswordChar = '*';
-            txtBox_MYSQL_Passwort.Size = new Size(179, 23);
+            txtBox_MYSQL_Passwort.Size = new Size(149, 23);
             txtBox_MYSQL_Passwort.TabIndex = 10;
-            txtBox_MYSQL_Passwort.Text = "giCi)GpH28,7i>`Tec?N8UtV5";
             // 
             // txtBox_MYSQL_Benutzer
             // 
             txtBox_MYSQL_Benutzer.Location = new Point(7, 89);
             txtBox_MYSQL_Benutzer.Margin = new Padding(4, 3, 4, 3);
             txtBox_MYSQL_Benutzer.Name = "txtBox_MYSQL_Benutzer";
-            txtBox_MYSQL_Benutzer.Size = new Size(179, 23);
+            txtBox_MYSQL_Benutzer.Size = new Size(149, 23);
             txtBox_MYSQL_Benutzer.TabIndex = 9;
-            txtBox_MYSQL_Benutzer.Text = "pi";
             // 
             // txtBox_MYSQL_IP
             // 
             txtBox_MYSQL_IP.Location = new Point(7, 40);
             txtBox_MYSQL_IP.Margin = new Padding(4, 3, 4, 3);
             txtBox_MYSQL_IP.Name = "txtBox_MYSQL_IP";
-            txtBox_MYSQL_IP.Size = new Size(179, 23);
+            txtBox_MYSQL_IP.Size = new Size(149, 23);
             txtBox_MYSQL_IP.TabIndex = 8;
-            txtBox_MYSQL_IP.Text = "192.168.0.3";
             // 
             // label6
             // 
@@ -204,9 +234,9 @@ namespace MYSQL_Benuter_erstellen
             label6.Location = new Point(7, 119);
             label6.Margin = new Padding(4, 3, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(99, 15);
+            label6.Size = new Size(57, 15);
             label6.TabIndex = 2;
-            label6.Text = "MYSQL Passwort:";
+            label6.Text = "Passwort:";
             // 
             // label5
             // 
@@ -214,9 +244,9 @@ namespace MYSQL_Benuter_erstellen
             label5.Location = new Point(7, 70);
             label5.Margin = new Padding(4, 3, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(98, 15);
+            label5.Size = new Size(86, 15);
             label5.TabIndex = 1;
-            label5.Text = "MYSQL Benutzer:";
+            label5.Text = "Benutzername:";
             // 
             // label4
             // 
@@ -224,9 +254,9 @@ namespace MYSQL_Benuter_erstellen
             label4.Location = new Point(7, 22);
             label4.Margin = new Padding(4, 3, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(101, 15);
+            label4.Size = new Size(66, 15);
             label4.TabIndex = 0;
-            label4.Text = "Server IP-Adresse:";
+            label4.Text = "IP-Adresse:";
             // 
             // checkBox1
             // 
@@ -242,248 +272,283 @@ namespace MYSQL_Benuter_erstellen
             // groupBox2
             // 
             groupBox2.Controls.Add(checkBox22);
-            groupBox2.Controls.Add(checkBox21);
-            groupBox2.Controls.Add(checkBox20);
-            groupBox2.Controls.Add(checkBox19);
-            groupBox2.Controls.Add(checkBox18);
-            groupBox2.Controls.Add(checkBox17);
-            groupBox2.Controls.Add(checkBox16);
-            groupBox2.Controls.Add(checkBox15);
-            groupBox2.Controls.Add(checkBox14);
-            groupBox2.Controls.Add(checkBox13);
-            groupBox2.Controls.Add(checkBox12);
-            groupBox2.Controls.Add(checkBox11);
-            groupBox2.Controls.Add(checkBox10);
-            groupBox2.Controls.Add(checkBox9);
-            groupBox2.Controls.Add(checkBox8);
-            groupBox2.Controls.Add(checkBox7);
-            groupBox2.Controls.Add(checkBox6);
-            groupBox2.Controls.Add(checkBox5);
-            groupBox2.Controls.Add(checkBox4);
-            groupBox2.Controls.Add(checkBox3);
-            groupBox2.Controls.Add(checkBox2);
-            groupBox2.Location = new Point(280, 7);
+            groupBox2.Controls.Add(chkBox_Recht_UPDATE);
+            groupBox2.Controls.Add(chkBox_Recht_TRIGGER);
+            groupBox2.Controls.Add(chkBox_Recht_SHOW_VIEW);
+            groupBox2.Controls.Add(chkBox_Recht_SELECT);
+            groupBox2.Controls.Add(chkBox_Recht_REFERENCES);
+            groupBox2.Controls.Add(chkBox_Recht_LOCK_TABLES);
+            groupBox2.Controls.Add(chkBox_Recht_INSERT);
+            groupBox2.Controls.Add(chkBox_Recht_INDEX);
+            groupBox2.Controls.Add(chkBox_Recht_EXECUTE);
+            groupBox2.Controls.Add(chkBox_Recht_EVENT);
+            groupBox2.Controls.Add(chkBox_Recht_DROP);
+            groupBox2.Controls.Add(chkBox_Recht_DELETE_HISTORY);
+            groupBox2.Controls.Add(chkBox_Recht_DELETE);
+            groupBox2.Controls.Add(chkBox_Recht_CREATE_VIEW);
+            groupBox2.Controls.Add(chkBox_Recht_CREATE_TEMPORARY_TABLES);
+            groupBox2.Controls.Add(chkBox_Recht_CREATE_ROUTINE);
+            groupBox2.Controls.Add(chkBox_Recht_CREATE);
+            groupBox2.Controls.Add(chkBox_Recht_ALTER_ROUTINE);
+            groupBox2.Controls.Add(chkBox_Recht_ALTER);
+            groupBox2.Controls.Add(chkBox_Recht_ALL);
+            groupBox2.Dock = DockStyle.Right;
+            groupBox2.Location = new Point(280, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(442, 451);
+            groupBox2.Size = new Size(281, 481);
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "Berechtigungen";
             // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(6, 22);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(125, 19);
-            checkBox2.TabIndex = 0;
-            checkBox2.Text = "Eiskalter Vollzugriff";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(6, 47);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(83, 19);
-            checkBox3.TabIndex = 1;
-            checkBox3.Text = "checkBox3";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(6, 72);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(83, 19);
-            checkBox4.TabIndex = 2;
-            checkBox4.Text = "checkBox4";
-            checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(6, 97);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(83, 19);
-            checkBox5.TabIndex = 3;
-            checkBox5.Text = "checkBox5";
-            checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            checkBox6.AutoSize = true;
-            checkBox6.Location = new Point(6, 122);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(83, 19);
-            checkBox6.TabIndex = 4;
-            checkBox6.Text = "checkBox6";
-            checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            checkBox7.AutoSize = true;
-            checkBox7.Location = new Point(6, 147);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(83, 19);
-            checkBox7.TabIndex = 5;
-            checkBox7.Text = "checkBox7";
-            checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(6, 172);
-            checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(83, 19);
-            checkBox8.TabIndex = 6;
-            checkBox8.Text = "checkBox8";
-            checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox9
-            // 
-            checkBox9.AutoSize = true;
-            checkBox9.Location = new Point(6, 197);
-            checkBox9.Name = "checkBox9";
-            checkBox9.Size = new Size(83, 19);
-            checkBox9.TabIndex = 7;
-            checkBox9.Text = "checkBox9";
-            checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox10
-            // 
-            checkBox10.AutoSize = true;
-            checkBox10.Location = new Point(6, 222);
-            checkBox10.Name = "checkBox10";
-            checkBox10.Size = new Size(89, 19);
-            checkBox10.TabIndex = 8;
-            checkBox10.Text = "checkBox10";
-            checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            checkBox11.AutoSize = true;
-            checkBox11.Location = new Point(6, 247);
-            checkBox11.Name = "checkBox11";
-            checkBox11.Size = new Size(89, 19);
-            checkBox11.TabIndex = 9;
-            checkBox11.Text = "checkBox11";
-            checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox12
-            // 
-            checkBox12.AutoSize = true;
-            checkBox12.Location = new Point(6, 272);
-            checkBox12.Name = "checkBox12";
-            checkBox12.Size = new Size(89, 19);
-            checkBox12.TabIndex = 10;
-            checkBox12.Text = "checkBox12";
-            checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox13
-            // 
-            checkBox13.AutoSize = true;
-            checkBox13.Location = new Point(6, 297);
-            checkBox13.Name = "checkBox13";
-            checkBox13.Size = new Size(89, 19);
-            checkBox13.TabIndex = 11;
-            checkBox13.Text = "checkBox13";
-            checkBox13.UseVisualStyleBackColor = true;
-            // 
-            // checkBox14
-            // 
-            checkBox14.AutoSize = true;
-            checkBox14.Location = new Point(6, 322);
-            checkBox14.Name = "checkBox14";
-            checkBox14.Size = new Size(89, 19);
-            checkBox14.TabIndex = 12;
-            checkBox14.Text = "checkBox14";
-            checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // checkBox15
-            // 
-            checkBox15.AutoSize = true;
-            checkBox15.Location = new Point(6, 347);
-            checkBox15.Name = "checkBox15";
-            checkBox15.Size = new Size(89, 19);
-            checkBox15.TabIndex = 13;
-            checkBox15.Text = "checkBox15";
-            checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox16
-            // 
-            checkBox16.AutoSize = true;
-            checkBox16.Location = new Point(6, 372);
-            checkBox16.Name = "checkBox16";
-            checkBox16.Size = new Size(89, 19);
-            checkBox16.TabIndex = 14;
-            checkBox16.Text = "checkBox16";
-            checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            checkBox17.AutoSize = true;
-            checkBox17.Location = new Point(6, 397);
-            checkBox17.Name = "checkBox17";
-            checkBox17.Size = new Size(89, 19);
-            checkBox17.TabIndex = 15;
-            checkBox17.Text = "checkBox17";
-            checkBox17.UseVisualStyleBackColor = true;
-            // 
-            // checkBox18
-            // 
-            checkBox18.AutoSize = true;
-            checkBox18.Location = new Point(6, 422);
-            checkBox18.Name = "checkBox18";
-            checkBox18.Size = new Size(89, 19);
-            checkBox18.TabIndex = 16;
-            checkBox18.Text = "checkBox18";
-            checkBox18.UseVisualStyleBackColor = true;
-            // 
-            // checkBox19
-            // 
-            checkBox19.AutoSize = true;
-            checkBox19.Location = new Point(137, 47);
-            checkBox19.Name = "checkBox19";
-            checkBox19.Size = new Size(89, 19);
-            checkBox19.TabIndex = 17;
-            checkBox19.Text = "checkBox19";
-            checkBox19.UseVisualStyleBackColor = true;
-            // 
-            // checkBox20
-            // 
-            checkBox20.AutoSize = true;
-            checkBox20.Location = new Point(137, 72);
-            checkBox20.Name = "checkBox20";
-            checkBox20.Size = new Size(89, 19);
-            checkBox20.TabIndex = 18;
-            checkBox20.Text = "checkBox20";
-            checkBox20.UseVisualStyleBackColor = true;
-            // 
-            // checkBox21
-            // 
-            checkBox21.AutoSize = true;
-            checkBox21.Location = new Point(137, 97);
-            checkBox21.Name = "checkBox21";
-            checkBox21.Size = new Size(89, 19);
-            checkBox21.TabIndex = 19;
-            checkBox21.Text = "checkBox21";
-            checkBox21.UseVisualStyleBackColor = true;
-            // 
             // checkBox22
             // 
             checkBox22.AutoSize = true;
-            checkBox22.Location = new Point(137, 22);
+            checkBox22.Location = new Point(137, 72);
             checkBox22.Name = "checkBox22";
             checkBox22.Size = new Size(138, 19);
             checkBox22.TabIndex = 20;
             checkBox22.Text = "With GRANT OPTION";
             checkBox22.UseVisualStyleBackColor = true;
+            checkBox22.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_UPDATE
+            // 
+            chkBox_Recht_UPDATE.AutoSize = true;
+            chkBox_Recht_UPDATE.Location = new Point(137, 47);
+            chkBox_Recht_UPDATE.Name = "chkBox_Recht_UPDATE";
+            chkBox_Recht_UPDATE.Size = new Size(68, 19);
+            chkBox_Recht_UPDATE.TabIndex = 19;
+            chkBox_Recht_UPDATE.Text = "UPDATE";
+            chkBox_Recht_UPDATE.UseVisualStyleBackColor = true;
+            chkBox_Recht_UPDATE.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_TRIGGER
+            // 
+            chkBox_Recht_TRIGGER.AutoSize = true;
+            chkBox_Recht_TRIGGER.Location = new Point(137, 22);
+            chkBox_Recht_TRIGGER.Name = "chkBox_Recht_TRIGGER";
+            chkBox_Recht_TRIGGER.Size = new Size(71, 19);
+            chkBox_Recht_TRIGGER.TabIndex = 18;
+            chkBox_Recht_TRIGGER.Text = "TRIGGER";
+            chkBox_Recht_TRIGGER.UseVisualStyleBackColor = true;
+            chkBox_Recht_TRIGGER.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_SHOW_VIEW
+            // 
+            chkBox_Recht_SHOW_VIEW.AutoSize = true;
+            chkBox_Recht_SHOW_VIEW.Location = new Point(6, 447);
+            chkBox_Recht_SHOW_VIEW.Name = "chkBox_Recht_SHOW_VIEW";
+            chkBox_Recht_SHOW_VIEW.Size = new Size(91, 19);
+            chkBox_Recht_SHOW_VIEW.TabIndex = 17;
+            chkBox_Recht_SHOW_VIEW.Text = "SHOW VIEW";
+            chkBox_Recht_SHOW_VIEW.UseVisualStyleBackColor = true;
+            chkBox_Recht_SHOW_VIEW.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_SELECT
+            // 
+            chkBox_Recht_SELECT.AutoSize = true;
+            chkBox_Recht_SELECT.Location = new Point(6, 422);
+            chkBox_Recht_SELECT.Name = "chkBox_Recht_SELECT";
+            chkBox_Recht_SELECT.Size = new Size(64, 19);
+            chkBox_Recht_SELECT.TabIndex = 16;
+            chkBox_Recht_SELECT.Text = "SELECT";
+            chkBox_Recht_SELECT.UseVisualStyleBackColor = true;
+            chkBox_Recht_SELECT.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_REFERENCES
+            // 
+            chkBox_Recht_REFERENCES.AutoSize = true;
+            chkBox_Recht_REFERENCES.Location = new Point(6, 397);
+            chkBox_Recht_REFERENCES.Name = "chkBox_Recht_REFERENCES";
+            chkBox_Recht_REFERENCES.Size = new Size(93, 19);
+            chkBox_Recht_REFERENCES.TabIndex = 15;
+            chkBox_Recht_REFERENCES.Text = "REFERENCES";
+            chkBox_Recht_REFERENCES.UseVisualStyleBackColor = true;
+            chkBox_Recht_REFERENCES.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_LOCK_TABLES
+            // 
+            chkBox_Recht_LOCK_TABLES.AutoSize = true;
+            chkBox_Recht_LOCK_TABLES.Location = new Point(6, 372);
+            chkBox_Recht_LOCK_TABLES.Name = "chkBox_Recht_LOCK_TABLES";
+            chkBox_Recht_LOCK_TABLES.Size = new Size(97, 19);
+            chkBox_Recht_LOCK_TABLES.TabIndex = 14;
+            chkBox_Recht_LOCK_TABLES.Text = "LOCK TABLES";
+            chkBox_Recht_LOCK_TABLES.UseVisualStyleBackColor = true;
+            chkBox_Recht_LOCK_TABLES.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_INSERT
+            // 
+            chkBox_Recht_INSERT.AutoSize = true;
+            chkBox_Recht_INSERT.Location = new Point(6, 347);
+            chkBox_Recht_INSERT.Name = "chkBox_Recht_INSERT";
+            chkBox_Recht_INSERT.Size = new Size(62, 19);
+            chkBox_Recht_INSERT.TabIndex = 13;
+            chkBox_Recht_INSERT.Text = "INSERT";
+            chkBox_Recht_INSERT.UseVisualStyleBackColor = true;
+            chkBox_Recht_INSERT.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_INDEX
+            // 
+            chkBox_Recht_INDEX.AutoSize = true;
+            chkBox_Recht_INDEX.Location = new Point(6, 322);
+            chkBox_Recht_INDEX.Name = "chkBox_Recht_INDEX";
+            chkBox_Recht_INDEX.Size = new Size(59, 19);
+            chkBox_Recht_INDEX.TabIndex = 12;
+            chkBox_Recht_INDEX.Text = "INDEX";
+            chkBox_Recht_INDEX.UseVisualStyleBackColor = true;
+            chkBox_Recht_INDEX.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_EXECUTE
+            // 
+            chkBox_Recht_EXECUTE.AutoSize = true;
+            chkBox_Recht_EXECUTE.Location = new Point(6, 297);
+            chkBox_Recht_EXECUTE.Name = "chkBox_Recht_EXECUTE";
+            chkBox_Recht_EXECUTE.Size = new Size(73, 19);
+            chkBox_Recht_EXECUTE.TabIndex = 11;
+            chkBox_Recht_EXECUTE.Text = "EXECUTE";
+            chkBox_Recht_EXECUTE.UseVisualStyleBackColor = true;
+            chkBox_Recht_EXECUTE.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_EVENT
+            // 
+            chkBox_Recht_EVENT.AutoSize = true;
+            chkBox_Recht_EVENT.Location = new Point(6, 272);
+            chkBox_Recht_EVENT.Name = "chkBox_Recht_EVENT";
+            chkBox_Recht_EVENT.Size = new Size(60, 19);
+            chkBox_Recht_EVENT.TabIndex = 10;
+            chkBox_Recht_EVENT.Text = "EVENT";
+            chkBox_Recht_EVENT.UseVisualStyleBackColor = true;
+            chkBox_Recht_EVENT.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_DROP
+            // 
+            chkBox_Recht_DROP.AutoSize = true;
+            chkBox_Recht_DROP.Location = new Point(6, 247);
+            chkBox_Recht_DROP.Name = "chkBox_Recht_DROP";
+            chkBox_Recht_DROP.Size = new Size(57, 19);
+            chkBox_Recht_DROP.TabIndex = 9;
+            chkBox_Recht_DROP.Text = "DROP";
+            chkBox_Recht_DROP.UseVisualStyleBackColor = true;
+            chkBox_Recht_DROP.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_DELETE_HISTORY
+            // 
+            chkBox_Recht_DELETE_HISTORY.AutoSize = true;
+            chkBox_Recht_DELETE_HISTORY.Location = new Point(25, 222);
+            chkBox_Recht_DELETE_HISTORY.Name = "chkBox_Recht_DELETE_HISTORY";
+            chkBox_Recht_DELETE_HISTORY.Size = new Size(72, 19);
+            chkBox_Recht_DELETE_HISTORY.TabIndex = 8;
+            chkBox_Recht_DELETE_HISTORY.Text = "HISTORY";
+            chkBox_Recht_DELETE_HISTORY.UseVisualStyleBackColor = true;
+            chkBox_Recht_DELETE_HISTORY.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_DELETE
+            // 
+            chkBox_Recht_DELETE.AutoSize = true;
+            chkBox_Recht_DELETE.Location = new Point(6, 197);
+            chkBox_Recht_DELETE.Name = "chkBox_Recht_DELETE";
+            chkBox_Recht_DELETE.Size = new Size(64, 19);
+            chkBox_Recht_DELETE.TabIndex = 7;
+            chkBox_Recht_DELETE.Text = "DELETE";
+            chkBox_Recht_DELETE.UseVisualStyleBackColor = true;
+            chkBox_Recht_DELETE.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_CREATE_VIEW
+            // 
+            chkBox_Recht_CREATE_VIEW.AutoSize = true;
+            chkBox_Recht_CREATE_VIEW.Location = new Point(25, 172);
+            chkBox_Recht_CREATE_VIEW.Name = "chkBox_Recht_CREATE_VIEW";
+            chkBox_Recht_CREATE_VIEW.Size = new Size(53, 19);
+            chkBox_Recht_CREATE_VIEW.TabIndex = 6;
+            chkBox_Recht_CREATE_VIEW.Text = "VIEW";
+            chkBox_Recht_CREATE_VIEW.UseVisualStyleBackColor = true;
+            chkBox_Recht_CREATE_VIEW.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_CREATE_TEMPORARY_TABLES
+            // 
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.AutoSize = true;
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.Location = new Point(25, 147);
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.Name = "chkBox_Recht_CREATE_TEMPORARY_TABLES";
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.Size = new Size(135, 19);
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.TabIndex = 5;
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.Text = "TEMPORARY TABLES";
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.UseVisualStyleBackColor = true;
+            chkBox_Recht_CREATE_TEMPORARY_TABLES.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_CREATE_ROUTINE
+            // 
+            chkBox_Recht_CREATE_ROUTINE.AutoSize = true;
+            chkBox_Recht_CREATE_ROUTINE.Location = new Point(25, 122);
+            chkBox_Recht_CREATE_ROUTINE.Name = "chkBox_Recht_CREATE_ROUTINE";
+            chkBox_Recht_CREATE_ROUTINE.Size = new Size(74, 19);
+            chkBox_Recht_CREATE_ROUTINE.TabIndex = 4;
+            chkBox_Recht_CREATE_ROUTINE.Text = "ROUTINE";
+            chkBox_Recht_CREATE_ROUTINE.UseVisualStyleBackColor = true;
+            chkBox_Recht_CREATE_ROUTINE.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_CREATE
+            // 
+            chkBox_Recht_CREATE.AutoSize = true;
+            chkBox_Recht_CREATE.Location = new Point(6, 97);
+            chkBox_Recht_CREATE.Name = "chkBox_Recht_CREATE";
+            chkBox_Recht_CREATE.Size = new Size(66, 19);
+            chkBox_Recht_CREATE.TabIndex = 3;
+            chkBox_Recht_CREATE.Text = "CREATE";
+            chkBox_Recht_CREATE.UseVisualStyleBackColor = true;
+            chkBox_Recht_CREATE.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_ALTER_ROUTINE
+            // 
+            chkBox_Recht_ALTER_ROUTINE.AutoSize = true;
+            chkBox_Recht_ALTER_ROUTINE.Location = new Point(25, 72);
+            chkBox_Recht_ALTER_ROUTINE.Name = "chkBox_Recht_ALTER_ROUTINE";
+            chkBox_Recht_ALTER_ROUTINE.Size = new Size(74, 19);
+            chkBox_Recht_ALTER_ROUTINE.TabIndex = 2;
+            chkBox_Recht_ALTER_ROUTINE.Text = "ROUTINE";
+            chkBox_Recht_ALTER_ROUTINE.UseVisualStyleBackColor = true;
+            chkBox_Recht_ALTER_ROUTINE.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_ALTER
+            // 
+            chkBox_Recht_ALTER.AutoSize = true;
+            chkBox_Recht_ALTER.Location = new Point(6, 47);
+            chkBox_Recht_ALTER.Name = "chkBox_Recht_ALTER";
+            chkBox_Recht_ALTER.Size = new Size(58, 19);
+            chkBox_Recht_ALTER.TabIndex = 1;
+            chkBox_Recht_ALTER.Text = "ALTER";
+            chkBox_Recht_ALTER.UseVisualStyleBackColor = true;
+            chkBox_Recht_ALTER.CheckedChanged += chkBox_Recht_Checked;
+            // 
+            // chkBox_Recht_ALL
+            // 
+            chkBox_Recht_ALL.AutoSize = true;
+            chkBox_Recht_ALL.Checked = true;
+            chkBox_Recht_ALL.CheckState = CheckState.Checked;
+            chkBox_Recht_ALL.Location = new Point(6, 22);
+            chkBox_Recht_ALL.Name = "chkBox_Recht_ALL";
+            chkBox_Recht_ALL.Size = new Size(125, 19);
+            chkBox_Recht_ALL.TabIndex = 0;
+            chkBox_Recht_ALL.Text = "Eiskalter Vollzugriff";
+            chkBox_Recht_ALL.UseVisualStyleBackColor = true;
+            // 
+            // btn_Neues_Passwort
+            // 
+            btn_Neues_Passwort.Location = new Point(94, 222);
+            btn_Neues_Passwort.Margin = new Padding(4, 3, 4, 3);
+            btn_Neues_Passwort.Name = "btn_Neues_Passwort";
+            btn_Neues_Passwort.Size = new Size(83, 27);
+            btn_Neues_Passwort.TabIndex = 10;
+            btn_Neues_Passwort.Text = "Neues PW";
+            btn_Neues_Passwort.UseVisualStyleBackColor = true;
+            btn_Neues_Passwort.Click += btn_Neues_Passwort_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(734, 463);
+            ClientSize = new Size(561, 481);
+            Controls.Add(btn_Neues_Passwort);
             Controls.Add(groupBox2);
             Controls.Add(checkBox1);
             Controls.Add(groupBox1);
@@ -521,31 +586,35 @@ namespace MYSQL_Benuter_erstellen
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_MYSQL_Daten_speichern;
         private System.Windows.Forms.TextBox txtBox_MYSQL_Passwort;
         private System.Windows.Forms.CheckBox checkBox1;
         private GroupBox groupBox2;
         private CheckBox checkBox22;
-        private CheckBox checkBox21;
-        private CheckBox checkBox20;
-        private CheckBox checkBox19;
-        private CheckBox checkBox18;
-        private CheckBox checkBox17;
-        private CheckBox checkBox16;
-        private CheckBox checkBox15;
-        private CheckBox checkBox14;
-        private CheckBox checkBox13;
-        private CheckBox checkBox12;
-        private CheckBox checkBox11;
-        private CheckBox checkBox10;
-        private CheckBox checkBox9;
-        private CheckBox checkBox8;
-        private CheckBox checkBox7;
-        private CheckBox checkBox6;
-        private CheckBox checkBox5;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
+        private CheckBox chkBox_Recht_UPDATE;
+        private CheckBox chkBox_Recht_TRIGGER;
+        private CheckBox chkBox_Recht_SHOW_VIEW;
+        private CheckBox chkBox_Recht_SELECT;
+        private CheckBox chkBox_Recht_REFERENCES;
+        private CheckBox chkBox_Recht_LOCK_TABLES;
+        private CheckBox chkBox_Recht_INSERT;
+        private CheckBox chkBox_Recht_INDEX;
+        private CheckBox chkBox_Recht_EXECUTE;
+        private CheckBox chkBox_Recht_EVENT;
+        private CheckBox chkBox_Recht_DROP;
+        private CheckBox chkBox_Recht_DELETE_HISTORY;
+        private CheckBox chkBox_Recht_DELETE;
+        private CheckBox chkBox_Recht_CREATE_VIEW;
+        private CheckBox chkBox_Recht_CREATE_TEMPORARY_TABLES;
+        private CheckBox chkBox_Recht_CREATE_ROUTINE;
+        private CheckBox chkBox_Recht_CREATE;
+        private CheckBox chkBox_Recht_ALTER_ROUTINE;
+        private CheckBox chkBox_Recht_ALTER;
+        private CheckBox chkBox_Recht_ALL;
+        private TextBox txtBox_MYSQL_Port;
+        private Label label7;
+        private Button btn_Neues_Passwort;
+        private CheckBox checkBox23;
     }
 }
 

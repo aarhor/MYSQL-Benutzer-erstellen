@@ -49,7 +49,6 @@ namespace MYSQL_Benuter_erstellen
             label4 = new Label();
             checkBox1 = new CheckBox();
             groupBox2 = new GroupBox();
-            richTextBox1 = new RichTextBox();
             chkBox_Recht_GRANT_OPTION = new CheckBox();
             chkBox_Recht_UPDATE = new CheckBox();
             chkBox_Recht_TRIGGER = new CheckBox();
@@ -275,7 +274,6 @@ namespace MYSQL_Benuter_erstellen
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(richTextBox1);
             groupBox2.Controls.Add(chkBox_Recht_GRANT_OPTION);
             groupBox2.Controls.Add(chkBox_Recht_UPDATE);
             groupBox2.Controls.Add(chkBox_Recht_TRIGGER);
@@ -305,14 +303,6 @@ namespace MYSQL_Benuter_erstellen
             groupBox2.TabStop = false;
             groupBox2.Tag = "Berechtigung";
             groupBox2.Text = "Berechtigungen";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(109, 172);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(160, 217);
-            richTextBox1.TabIndex = 21;
-            richTextBox1.Text = "";
             // 
             // chkBox_Recht_GRANT_OPTION
             // 
@@ -550,7 +540,6 @@ namespace MYSQL_Benuter_erstellen
             // chkBox_Recht_ALTER_ROUTINE
             // 
             chkBox_Recht_ALTER_ROUTINE.AutoSize = true;
-            chkBox_Recht_ALTER_ROUTINE.Enabled = false;
             chkBox_Recht_ALTER_ROUTINE.Location = new Point(25, 72);
             chkBox_Recht_ALTER_ROUTINE.Name = "chkBox_Recht_ALTER_ROUTINE";
             chkBox_Recht_ALTER_ROUTINE.Size = new Size(74, 19);
@@ -689,7 +678,6 @@ namespace MYSQL_Benuter_erstellen
         private CheckBox checkBox23;
         private TextBox txtBox_Host;
         private Label label8;
-        private RichTextBox richTextBox1;
     }
 }
 

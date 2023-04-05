@@ -154,7 +154,7 @@ namespace MYSQL_Benuter_erstellen
                     }
                 }
 
-                if (richTextBox1.InvokeRequired) richTextBox1.Invoke(new Action(() => richTextBox1.Text = string.Format("Recht:\n{0}", Berechtigungen)));
+                //if (richTextBox1.InvokeRequired) richTextBox1.Invoke(new Action(() => richTextBox1.Text = string.Format("Recht:\n{0}", Berechtigungen)));
             }
         }
 
@@ -231,9 +231,7 @@ namespace MYSQL_Benuter_erstellen
         {
             PasswordGenerator randomPasswordGenerator = new PasswordGenerator();
 
-            string password = randomPasswordGenerator.GeneratePassword(true, true, true, true, 30);
-
-            MessageBox.Show(password);
+            txtBox_Passwort.Text = randomPasswordGenerator.GeneratePassword(true, true, true, true, 30);
         }
 
         private async void chkBox_Recht_Checked(object sender, EventArgs e)

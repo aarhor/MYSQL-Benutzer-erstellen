@@ -563,8 +563,6 @@ namespace MYSQL_Benuter_erstellen
             // chkBox_Recht_ALTER
             // 
             chkBox_Recht_ALTER.AutoSize = true;
-            chkBox_Recht_ALTER.Checked = true;
-            chkBox_Recht_ALTER.CheckState = CheckState.Checked;
             chkBox_Recht_ALTER.Location = new Point(6, 47);
             chkBox_Recht_ALTER.Name = "chkBox_Recht_ALTER";
             chkBox_Recht_ALTER.Size = new Size(58, 19);

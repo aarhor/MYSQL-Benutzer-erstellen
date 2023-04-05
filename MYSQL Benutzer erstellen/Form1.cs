@@ -178,7 +178,7 @@ namespace MYSQL_Benuter_erstellen
         {
             try
             {
-                Berechtigungen = " ALTER, CREATE, DELETE, DROP, INSERT, LOCK TABLES, SELECT, UPDATE,";
+                Berechtigungen = " CREATE, DELETE, DROP, INSERT, LOCK TABLES, SELECT, UPDATE,"; //Standardberechtigungen
                 string Passwort = Crypto_137.Text_Decrypt(Registry.GetValue("Passwort"), string.Empty);
 
                 txtBox_MYSQL_IP.Text = Registry.GetValue("IP-Adresse");
@@ -191,7 +191,8 @@ namespace MYSQL_Benuter_erstellen
             }
             catch (NullReferenceException ex)
             {
-                MessageBox.Show("Es fehlen Daten. Bitte einmal die MYSQL Verbindungsdaten prüfen und dort auf den Button \"Speichern\" drücken.");
+                MessageBox.Show("Es fehlen Daten. Bitte einmal die MYSQL Verbindungsdaten prüfen und dort auf den Button \"Speichern\" drücken.\n" +
+                    ex.Message.ToString());
             }
         }
 

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Web;
 using MYSQL_Benutzer_erstellen.Klassen;
+using System.IO;
 
 namespace MYSQL_Benuter_erstellen
 {
@@ -176,6 +177,23 @@ namespace MYSQL_Benuter_erstellen
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            string UserFile = string.Format(@"{0}\Microsoft\UserSecrets\f2979d6f-6fbc-4943-b574-b488c2eac9d7\secrets.json", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            if (!File.Exists(UserFile))
+            {
+                MessageBox.Show("Datei nicht vorhanden");
+                _ = Directory.CreateDirectory(Path.GetDirectoryName(UserFile));
+                PasswordGenerator randomPasswordGenerator = new();
+
+                string Passwort = randomPasswordGenerator.GeneratePassword(true, true, true, true, 30);
+
+                using (StreamWriter writer = new StreamWriter(UserFile))
+                {
+                    writer.WriteLine("{");
+                    writer.WriteLine(string.Format("\"Crypto_137\": \"{0}\"", Passwort));
+                    writer.WriteLine("}");
+                }
+            }
+
             try
             {
                 Berechtigungen = " CREATE, DELETE, DROP, INSERT, LOCK TABLES, SELECT, UPDATE,"; //Standardberechtigungen
@@ -253,6 +271,11 @@ namespace MYSQL_Benuter_erstellen
                 txtBox_MYSQL_Passwort.PasswordChar = '\0';
             else
                 txtBox_MYSQL_Passwort.PasswordChar = '*';
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

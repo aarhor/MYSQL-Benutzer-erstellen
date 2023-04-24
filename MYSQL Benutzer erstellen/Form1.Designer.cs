@@ -73,6 +73,7 @@ namespace MYSQL_Benuter_erstellen
             btn_Neues_Passwort = new Button();
             txtBox_Host = new TextBox();
             label8 = new Label();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -602,11 +603,24 @@ namespace MYSQL_Benuter_erstellen
             label8.TabIndex = 12;
             label8.Text = "Host:";
             // 
+            // button1
+            // 
+            button1.Location = new Point(13, 222);
+            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(73, 27);
+            button1.TabIndex = 13;
+            button1.Text = "Init";
+            button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(561, 481);
+            Controls.Add(button1);
             Controls.Add(txtBox_Host);
             Controls.Add(label8);
             Controls.Add(btn_Neues_Passwort);
@@ -634,22 +648,22 @@ namespace MYSQL_Benuter_erstellen
 
         #endregion
 
-        private System.Windows.Forms.Button btn_Speichern;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBox_Name;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox txtBox_Passwort;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtBox_MYSQL_Benutzer;
-        private System.Windows.Forms.TextBox txtBox_MYSQL_IP;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btn_MYSQL_Daten_speichern;
-        private System.Windows.Forms.TextBox txtBox_MYSQL_Passwort;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private Button btn_Speichern;
+        private Label label1;
+        private TextBox txtBox_Name;
+        private ListBox listBox1;
+        private TextBox txtBox_Passwort;
+        private Label label2;
+        private Label label3;
+        private GroupBox groupBox1;
+        private TextBox txtBox_MYSQL_Benutzer;
+        private TextBox txtBox_MYSQL_IP;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Button btn_MYSQL_Daten_speichern;
+        private TextBox txtBox_MYSQL_Passwort;
+        private CheckBox checkBox1;
         private GroupBox groupBox2;
         private CheckBox chkBox_Recht_GRANT_OPTION;
         private CheckBox chkBox_Recht_UPDATE;
@@ -678,6 +692,7 @@ namespace MYSQL_Benuter_erstellen
         private CheckBox checkBox23;
         private TextBox txtBox_Host;
         private Label label8;
+        private Button button1;
     }
 }
 

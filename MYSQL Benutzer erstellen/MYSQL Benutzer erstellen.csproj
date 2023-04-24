@@ -18,12 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="MySql.Data">
-      <HintPath>C:\Users\Aaron\Downloads\Bibliotheken\MYSQL Connector\net6.0\MySql.Data.dll</HintPath>
-    </Reference>
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
   </ItemGroup>
 
 </Project>

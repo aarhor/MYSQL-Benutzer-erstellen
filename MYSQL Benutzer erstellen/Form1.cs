@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Threading;
@@ -14,51 +13,6 @@ namespace MYSQL_Benuter_erstellen
         public Form1() => InitializeComponent();
         public string Berechtigungen = "";
         bool Grant_Option = false;
-
-        public void MYSQL(string SQL_Befehl, int switch_on)
-        {
-            try
-            {
-                MySqlConnection mySqlConnection = new(MYSQL_Benutzer_erstellen.Klassen.MYSQL.Connectionstring());
-                mySqlConnection.Open();
-
-                MySqlCommand command = mySqlConnection.CreateCommand();
-
-                switch (switch_on)
-                {
-                    case 1:
-                        {
-                            command.CommandText = SQL_Befehl;
-                            IDataReader reader = command.ExecuteReader();
-                            int i = 0;
-                            if (listBox1.InvokeRequired) listBox1.Invoke(new Action(listBox1.Items.Clear));
-                            while (reader.Read() != false)
-                            {
-                                if (listBox1.InvokeRequired) listBox1.Invoke(new Action(() => listBox1.Items.Add(reader[i].ToString())));
-                            }
-
-                            reader.Close();
-                            break;
-                        }
-                    case 2:
-                        {
-                            command.CommandText = SQL_Befehl;
-                            IDataReader reader = command.ExecuteReader();
-                            reader.Close();
-                            MessageBox.Show("Der Servicebenutzer wurde erfolgreich angelegt.");
-                            break;
-                        }
-                    default:
-                        break;
-                }
-                command.Dispose();
-                mySqlConnection.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
 
         public string Set_Checkbox(string Checkbox_Name, bool Check)
         {
@@ -205,7 +159,15 @@ namespace MYSQL_Benuter_erstellen
                 txtBox_MYSQL_Port.Text = Registry.GetValue("Port");
                 txtBox_Host.Text = Registry.GetValue("Letzter Host");
 
-                await Task.Run(() => MYSQL("show databases", 1));
+                List<string> list = MYSQL.Auflistung_Einträge("show databases", 1);
+                list.Sort();
+
+                foreach (var item in list)
+                {
+                    listBox1.Items.Add(item);
+                }
+                list.Clear();
+
             }
             catch (NullReferenceException ex)
             {
@@ -222,17 +184,23 @@ namespace MYSQL_Benuter_erstellen
             string Host = txtBox_Host.Text;
 
             if (!checkBox1.Checked)
-                MYSQL(string.Format("CREATE USER '{0}'@'{1}' IDENTIFIED BY '{2}';FLUSH PRIVILEGES;", Benutzernameli, Host, Passwortli), 2);
+                if (!MYSQL.Nur_Befehl(string.Format("CREATE USER '{0}'@'{1}' IDENTIFIED BY '{2}';FLUSH PRIVILEGES;", Benutzernameli, Host, Passwortli))) { MessageBox.Show("Der Benutzer konnte nicht erstellt werden!"); }
 
             Berechtigungen = Berechtigungen.Remove(Berechtigungen.Length - 1, 1);
 
             if (Grant_Option)
                 Berechtigungen += ", GRANT OPTION";
 
-            MYSQL(string.Format("GRANT{0} ON {1}.* TO '{2}'@'{3}';FLUSH PRIVILEGES;", Berechtigungen.ToLower(), Datenbankli, Benutzernameli, Host), 2);
+            if (MYSQL.Nur_Befehl(string.Format("GRANT{0} ON {1}.* TO '{2}'@'{3}';FLUSH PRIVILEGES;", Berechtigungen.ToLower(), Datenbankli, Benutzernameli, Host)))
+            {
+                if (checkBox1.Checked)
+                    MessageBox.Show("Der Benutzer wurde erfolgreich angelegt und die gewünschten Berechtigungen wurde zugewiesen.");
+                else
+                    MessageBox.Show("Dem Benutzer wurden erfolgreich die gewünschten Berechtigungen zugewiesen.");
+            }
         }
 
-        private async void btn_MYSQL_Daten_speichern_Click(object sender, EventArgs e)
+        private void btn_MYSQL_Daten_speichern_Click(object sender, EventArgs e)
         {
             string Passwort = Crypto_137.Text_Encrypt(txtBox_MYSQL_Passwort.Text, string.Empty);
 
@@ -242,7 +210,14 @@ namespace MYSQL_Benuter_erstellen
             Registry.SetValue("Port", txtBox_MYSQL_Port.Text);
             Registry.SetValue("Letzter Host", txtBox_Host.Text);
 
-            await Task.Run(() => MYSQL("show databases", 1));
+            List<string> list = MYSQL.Auflistung_Einträge("show databases", 1);
+            list.Sort();
+
+            foreach (var item in list)
+            {
+                listBox1.Items.Add(item);
+            }
+            list.Clear();
         }
 
         private void btn_Neues_Passwort_Click(object sender, EventArgs e)

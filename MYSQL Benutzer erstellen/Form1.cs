@@ -159,6 +159,9 @@ namespace MYSQL_Benuter_erstellen
                 txtBox_MYSQL_Port.Text = Registry.GetValue("Port");
                 txtBox_Host.Text = Registry.GetValue("Letzter Host");
 
+                if (txtBox_MYSQL_IP.Text == "")
+                    throw new FormatException();
+
                 List<string> list = MYSQL.Auflistung_Einträge("show databases", 1);
                 list.Sort();
 
@@ -166,13 +169,18 @@ namespace MYSQL_Benuter_erstellen
                 {
                     listBox1.Items.Add(item);
                 }
+
                 list.Clear();
 
             }
             catch (NullReferenceException ex)
             {
-                MessageBox.Show("Es fehlen Daten. Bitte einmal die MYSQL Verbindungsdaten prüfen und dort auf den Button \"Speichern\" drücken.\n" +
+                MessageBox.Show("Es ist ein Fehler aufgetreten. Bitte einmal die MYSQL Verbindungsdaten prüfen und dort auf den Button \"Speichern\" drücken.\n" +
                     ex.Message.ToString());
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Es fehlen Daten. Bitte einmal die MYSQL Verbindungsdaten prüfen und dort auf den Button \"Speichern\" drücken.");
             }
         }
 
